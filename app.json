@@ -1,42 +1,47 @@
 {
   "expo": {
-    "name": "drum",
-    "slug": "drum",
+    "name": "Drum Tune",
+    "slug": "drum-tune",
     "version": "1.0.0",
+    "icon": "./ic_launcher.png",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
-    "scheme": "drum",
-    "userInterfaceStyle": "automatic",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#15120F",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
-      "icon": "./assets/expo.icon"
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSMicrophoneUsageDescription": "Тюнеру нужен доступ к микрофону, чтобы услышать удар по барабану и определить высоту тона."
+      }
     },
     "android": {
-      "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/images/android-icon-foreground.png",
-        "backgroundImage": "./assets/images/android-icon-background.png",
-        "monochromeImage": "./assets/images/android-icon-monochrome.png"
-      },
-      "predictiveBackGestureEnabled": false
+      "permissions": [
+        "RECORD_AUDIO",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.MODIFY_AUDIO_SETTINGS",
+        "android.permission.FOREGROUND_SERVICE",
+        "android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK"
+      ],
+      "package": "com.ner0yn.drumtune"
     },
     "web": {
-      "output": "server",
-      "favicon": "./assets/images/favicon.png"
+      "bundler": "metro"
     },
     "plugins": [
-      "expo-router",
       [
-        "expo-splash-screen",
+        "expo-audio",
         {
-          "backgroundColor": "#208AEF",
-          "image": "./assets/images/splash-icon.png",
-          "imageWidth": 76
+          "microphonePermission": "Тюнеру нужен доступ к микрофону, чтобы услышать удар по барабану и определить высоту тона."
         }
-      ]
+      ],
+      "expo-asset"
     ],
-    "experiments": {
-      "typedRoutes": true,
-      "reactCompiler": true
+    "extra": {
+      "eas": {
+        "projectId": "32728e50-1485-4e85-b354-b7ef4f5427ec"
+      }
     }
   }
 }
